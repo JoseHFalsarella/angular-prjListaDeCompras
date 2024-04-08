@@ -1,0 +1,21 @@
+<section class="container">
+    <section><h1>Lista de Compras</h1></section>
+    <section id="form">
+        <form id="add" [formGroup]="listForm" (ngSubmit)="addItem()">
+            <div class="inputs">
+                <input id="writeItem" type="text" placeholder="Adicione um Item..." formControlName="writeItem">
+                <input type="submit" id="btnAdd" value="Adicionar" [disabled]="!listForm.valid">
+            </div>
+            <div class="message" *ngIf="listForm.get('writeItem')?.invalid && listForm.get('writeItem')?.touched">
+                <p>Você não inseriu nenhum item...</p>
+            </div>
+        </form>
+    </section>
+    <section id="list">
+        <ul>
+            <li *ngFor="let item of shoppingList; let i = index">
+                {{item}}
+            </li>
+        </ul>
+    </section>
+</section>
