@@ -3,6 +3,7 @@
     <section id="form">
         <form id="add" [formGroup]="listForm" (ngSubmit)="addItem()">
             <div class="inputs">
+                <input id="insertQty" type="number" min="1" value="1" formControlName="insertQty">
                 <input id="writeItem" type="text" placeholder="Adicione um Item..." formControlName="writeItem">
                 <input type="submit" id="btnAdd" value="Adicionar" [disabled]="!listForm.valid">
             </div>
@@ -11,11 +12,20 @@
             </div>
         </form>
     </section>
-    <section id="list">
-        <ul>
-            <li *ngFor="let item of shoppingList; let i = index">
-                {{item}}
-            </li>
-        </ul>
+    <section id="table">
+        <table>
+            <thead>
+                <tr>
+                  <th>Quantidade</th>
+                  <th>Item</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of shoppingList; let i = index">
+                  <td>{{ item.quantity }}</td>
+                  <td>{{ item.name }}</td>
+                </tr>
+              </tbody>
+        </table>
     </section>
 </section>

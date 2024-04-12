@@ -8,18 +8,20 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators} f
 })
 export class ListaDeComprasComponent {
   listForm: FormGroup;
-  shoppingList: string[]=[];
+  shoppingList: {name: string, quantity: number}[]=[];
 
   constructor(private formBuilder: FormBuilder) {
     this.listForm = this.formBuilder.group({
-      writeItem: ['', Validators.required]
+      writeItem: ['', Validators.required],
+      insertQty: ['', [Validators.required, Validators.min(1)]]
     });
   }
 
   addItem() {
     if (this.listForm.valid) {
       const itemName = this.listForm.get('writeItem')?.value;
-      this.shoppingList.push(itemName);
+      const itemQty = this.listForm.get('insertQty')?.value;
+      this.shoppingList.push({name: itemName, quantity: itemQty});
       this.listForm.reset();
     } else {
       this.listForm.markAllAsTouched();
