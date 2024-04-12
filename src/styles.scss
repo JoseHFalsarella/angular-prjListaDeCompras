@@ -1,1 +1,44 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+    font-weight: normal;
+}
+
+h1, h2, h3, p {
+    color: #363537;
+}
+
+html {
+    background-color: #f8f7f9;
+}
+
+input[type=text] {
+    height: 40px;
+    border-radius: 16px;
+    border: 2px #626263 solid;
+    padding-left: 12px;
+}
+
+input[type=text]:focus {
+    outline-color: #363537;
+}
+  
+input[type=submit] {
+    height: 40px;
+    border-radius: 12px;
+    border-style: none;
+    font-weight: 600;
+}
+
+input[type=number] {
+    max-width: 100px;
+    height: 40px;
+    border-radius: 16px;
+    border: 2px #626263 solid;
+    padding-left: 12px;
+    padding-right: 12px;
+}

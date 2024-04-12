@@ -1,0 +1,100 @@
+.container {
+    padding: 32px;
+    margin: auto;
+
+    max-width: 70%;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    p {
+        font-size: smaller;
+    }
+
+    .message {
+        position: absolute;
+        margin-top: 43px;
+        margin-left: 1%;
+    }
+}
+
+.inputs {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+}
+
+#writeItem {
+    width: 100%;
+}
+
+#btnAdd {
+    width: 120px;
+    background-color: #2fbf71;
+    color: white;
+    transition: background-color .35s ease-in-out;
+}
+
+#btnAdd:hover {
+    background-color: #6fdba0;
+    cursor: pointer;
+}
+
+#form {
+    margin-top: 24px;
+}
+
+#table {
+    margin-top: 32px;
+    width: 100%;
+    background-color: #c5c5c5;
+    border-radius: 12px;
+    padding: 24px 32px;
+
+    button {
+        background: none;
+        border-style: none;
+        padding-top: 5px;
+        
+        img {
+            height: 20px;
+        }
+    }
+
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+    
+th, td {
+    text-align: center;
+    border-bottom: 2px solid #747474;
+    vertical-align: middle;
+    width: auto;
+}
+
+td {
+    align-items: center; 
+}
+
+#item-qtty, #item-name {
+    border: 2px solid #747474;;
+}
+
+#qtty, #done {
+    width: 120px;
+}
+
+#rmv {
+    width: 90px;
+}
+
+tr:has(input[type=checkbox]:checked) .item-info {
+    text-decoration: line-through;
+    color: #868686;
+}
