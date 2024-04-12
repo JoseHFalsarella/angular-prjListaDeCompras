@@ -16,16 +16,20 @@
         <table>
             <thead>
                 <tr>
-                  <th>Quantidade</th>
-                  <th>Item</th>
-                  <th>Remover</th>
+                    <th id="done">Concluído</th>
+                    <th id="qtty">Quantidade</th>
+                    <th id="name">Item</th>
+                    <th id="rmv">Remover</th>
                 </tr>
               </thead>
               <tbody>
                 <tr *ngFor="let item of shoppingList; let i = index">
-                  <td>{{ item.quantity }}</td>
-                  <td>{{ item.name }}</td>
-                  <td><button (click)="removeItem(i)"><img src="../../../assets/images/remove.png"></button></td>
+                    <td>
+                        <input type="checkbox" id="item-done-{{i}}" (change)="toggleDone($event, i)" [checked]="item.done">
+                    </td>
+                    <td class="item-qtty"><p class="item-info">{{ item.quantity }}</p></td>
+                    <td class="item-name"><p class=" item-info">{{ item.name }}</p></td>
+                    <td><button (click)="removeItem(i)"><img src="../../../assets/images/remove.png"></button></td>
                 </tr>
               </tbody>
         </table>
