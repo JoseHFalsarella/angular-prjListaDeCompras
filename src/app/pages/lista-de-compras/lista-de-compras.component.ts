@@ -27,4 +27,8 @@ export class ListaDeComprasComponent {
       this.listForm.markAllAsTouched();
     }
   }
+
+  removeItem(index: number) {
+    this.shoppingList.splice(index, 1);
+  }
 }
