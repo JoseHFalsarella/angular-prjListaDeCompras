@@ -23,6 +23,13 @@ input[type=text] {
     padding-left: 12px;
 }
 
+input[type=password] {
+    height: 40px;
+    border-radius: 16px;
+    border: 2px #626263 solid;
+    padding-left: 12px;
+}
+
 input[type=text]:focus {
     outline-color: #363537;
 }

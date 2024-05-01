@@ -29,6 +29,16 @@ h1 {
 
     min-width: 350px;
     max-width: 600px;
+
+    p {
+        text-align: center;
+        font-size: 12px;
+
+        a {
+            color: #3066BE;
+            cursor: pointer;
+        }
+    }
 }
 
 form {
