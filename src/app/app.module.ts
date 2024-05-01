@@ -5,11 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ListaDeComprasComponent } from './pages/lista-de-compras/lista-de-compras.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RegisterComponent } from './pages/register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListaDeComprasComponent
+    ListaDeComprasComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
