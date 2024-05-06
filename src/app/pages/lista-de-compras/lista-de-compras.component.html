@@ -1,7 +1,7 @@
 <section class="container">
     <section><h1>Lista de Compras</h1></section>
     <section id="form">
-        <form id="add" [formGroup]="listForm" (ngSubmit)="addItem()">
+        <form id="add" [formGroup]="listForm" (ngSubmit)="createItem()">
             <div class="inputs">
                 <input id="insertQty" type="number" min="1" value="1" formControlName="insertQty">
                 <input id="writeItem" type="text" placeholder="Adicione um Item..." formControlName="writeItem">
@@ -25,11 +25,11 @@
               <tbody>
                 <tr *ngFor="let item of shoppingList; let i = index">
                     <td>
-                        <input type="checkbox" id="item-done-{{i}}" (change)="toggleDone($event, i)" [checked]="item.done">
+                        <input type="checkbox" id="item-status-{{i}}" (change)="toggleDone($event, item.id)" [checked]="item.status">
                     </td>
                     <td class="item-qtty"><p class="item-info">{{ item.quantity }}</p></td>
-                    <td class="item-name"><p class=" item-info">{{ item.name }}</p></td>
-                    <td><button (click)="removeItem(i)"><img src="../../../assets/images/remove.png"></button></td>
+                    <td class="item-name"><p class=" item-info">{{ item.nome }}</p></td>
+                    <td><button (click)="removeItem(item.id)"><img src="../../../assets/images/remove.png"></button></td>
                 </tr>
               </tbody>
         </table>

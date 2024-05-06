@@ -9,7 +9,7 @@ import { ApiService } from '../../services/api.service';
 })
 export class ListaDeComprasComponent implements OnInit {
   listForm: FormGroup;
-  shoppingList: { name: string; quantity: number; done: boolean; }[] = [];
+  shoppingList: any[] = [];
 
   constructor(private formBuilder: FormBuilder,
               private apiService: ApiService
@@ -26,14 +26,14 @@ export class ListaDeComprasComponent implements OnInit {
     })
   }
 
-  addItem() {
+  createItem() {
     if (this.listForm.valid) {
-      const itemName = this.listForm.get('writeItem')?.value;
-      const itemQty = this.listForm.get('insertQty')?.value;
+      const nome = this.listForm.get('writeItem')?.value;
+      const quantity = this.listForm.get('insertQty')?.value;
 
-      this.apiService.createItem(itemName, itemQty).subscribe((result: any) => {
+      this.apiService.createItem(nome, quantity).subscribe((result: any) => {
         console.log(result);
-        this.shoppingList.push({ name: itemName, quantity: itemQty, done: false });
+        this.shoppingList.push({ nome, quantity });
       })
 
       this.listForm.reset();
@@ -42,18 +42,23 @@ export class ListaDeComprasComponent implements OnInit {
     }
   }
 
-  removeItem(index: number) {
-    this.apiService.deleteItem(index).subscribe((result: any) => {
+  removeItem(id: number) {
+    this.apiService.deleteItem(id).subscribe((result: any) => {
       console.log(result);
-      this.shoppingList.splice(index, 1);
+      this.shoppingList.splice(id, 1);
     })
+    window.location.reload();
   }
 
-  toggleDone(event: any, index: number) {
-    const isChecked = event.target.checked;
-    this.apiService.updateStatus(isChecked, index).subscribe((result: any) => {
-      console.log(result);
-      this.shoppingList[index].done = isChecked;
-    })
+  updateItemStatus(id: number, status: boolean) {
+      this.apiService.updateStatus(status, id).toPromise();
+  }
+
+  async toggleDone(event: Event, id: number){
+    const index = this.shoppingList.findIndex(item => item.id === id);
+    if (index !== -1) {
+      this.shoppingList[index].status = (event.target as HTMLInputElement).checked;
+      this.updateItemStatus(id, this.shoppingList[index].status);
+    }
   }
 }
