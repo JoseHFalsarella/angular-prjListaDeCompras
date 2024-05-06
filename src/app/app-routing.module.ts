@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { authGuard } from './guards/auth.guard';
+//import { authGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {
     path: "",
     pathMatch: "full",
-    redirectTo: "login"
+    redirectTo: "lista"
   },
   {
     path: "lista",
     loadChildren: () => import("./pages/lista-de-compras/lista-de-compras.module").then(m => m.ListaDeComprasModule),
-    canActivate: [authGuard]
+    //canActivate: [authGuard]
   },
   {
     path: "register",
